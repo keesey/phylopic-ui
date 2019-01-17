@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns#">
+  <title>{{entity.given_name}} {{entity.family_name}} – PhyloPic</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="author" content="T. Michael Keesey (website)">
+  <meta name="description" content="PhyloPic page for {{entity.given_name}} {{entity.family_name}}.">
+  <meta name="language" content="en">
+  <meta name="no-email-collection" content="//unspam.com/noemailcollection">
+  <meta name="reply-to" content="{{entity.email}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@tmkeesey">
+  <meta name="twitter:description" content="PhyloPic page for {{entity.given_name}} {{entity.family_name}}.">
+  <meta name="twitter:site" content="@phylopic">
+  <meta name="twitter:title" content="{{entity.given_name}} {{entity.family_name}} – PhyloPic">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta property="fb:app_id" content="280987075278200">
+  <meta property="og:description" content="PhyloPic page for {{entity.given_name}} {{entity.family_name}}.">
+  <meta property="og:site_name" content="PhyloPic">
+  <meta property="og:title" content="{{entity.given_name}} {{entity.family_name}} – PhyloPic">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://phylopic.org/accounts/{{entity.uuid}}">
+  <link rel="copyright" href="#copyright">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  {{#if entity._links.imageSet}}
+  <link rel="pp:imageSet" href="{{entity._links.imageSet.href}}">
+  {{/if}}
+  {{#if entity._links.nodeSet}}
+  <link rel="pp:nodeSet" href="{{entity._links.nodeSet.href}}">
+  {{/if}}
+  <link rel="self" href="http://phylopic.org{{entity._links.self.href}}">
+  <script type="text/javascript">window.__PHYLOPIC__ENTITY__={{#json entity}}{{/json}}</script>
+</head>
+
+<body id="app">
+  <header>
+    <h1>{{entity.given_name}} {{entity.family_name}}</h1>
+    <h2><a href="mailto:{{entity.email}}">{{entity.email}}</a></h2>
+  </header>
+  <main>
+    <section>
+      <h2>Names Contributed</h2>
+      <ul class="name-list"></ul>
+    </section>
+    <section>
+      <h2>Silhouettes Contributed</h2>
+      <ul class="image-list"></ul>
+    </section>
+  </main>
+  <footer>
+    <section id="copyright">
+      Website &copy; 2019 T. Michael Keesey.
+    </section>
+  </footer>
+</body>
+
+</html>

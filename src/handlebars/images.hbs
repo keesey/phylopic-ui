@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns#
+              pp: http://docs.phylopic.org/ns#">
+  <title>{{#textname entity._embedded.specificNode.names[0]}}{{/textname}}{{#if entity.attribution }} by {{entity.attribution}}{{/if}} – PhyloPic</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="author" content="{{entity.attribution || 'Unknown'}} (image), T. Michael Keesey (website)">
+  <meta name="description" content="Silhouette of {{#textname entity._embedded.specificNode.names[0]}}{{/textname}}{{#if entity.attribution }} by {{entity.attribution}}{{/if}}.">
+  <meta name="language" content="en">
+  <meta name="no-email-collection" content="//unspam.com/noemailcollection">
+  <meta name="reply-to" content="{{entity._embedded.contributor.email}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:description" content="Silhouette of {{#textname entity._embedded.specificNode.names[0]}}{{/textname}}{{#if entity.attribution }} by {{entity.attribution}}{{/if}}.">
+  {{#with entity._links['twitter:image']}}
+  <meta name="twitter:image" content="{{href}}">
+  <meta name="twitter:image:height" content="{{#height sizes}}">
+  <meta name="twitter:image:width" content="{{#width sizes}}">
+  {{/with}}
+  <meta name="twitter:site" content="@phylopic">
+  <meta name="twitter:title" content="{{#textname entity.names[0]}}{{/textname}} – PhyloPic">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta property="fb:app_id" content="280987075278200">
+  <meta property="og:description" content="Free silhouettes for {{#textname entity.names[0]}}{{/textname}}.">
+  {{#with entity._links['http://ogp.me/ns#image']}}
+  <link rel="image_src" href="{{href}}">
+  <meta property="og:image" content="{{href}}">
+  <meta property="og:image:height" content="{{#height sizes}}">
+  <meta property="og:image:type" content="{{type}}">
+  <meta property="og:image:width" content="{{#width sizes}}">
+  {{/with}}
+  <meta property="og:site_name" content="PhyloPic">
+  <meta property="og:title" content="{{#textname entity._embedded.specificNode.names[0]}}{{/textname}}{{#if entity.attribution }} by {{entity.attribution}}{{/if}} – PhyloPic">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://phylopic.org/images/{{entity.uuid}}">
+  <link rel="copyright" href="#copyright">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="license" href="{{entity._links.license.href}}">
+  {{#if entity._links.contributor}}
+  <link rel="pp:contributor" href="{{entity._links.contributor.href}}">
+  {{/if}}
+  {{#if entity._links.generalNode}}
+  <link rel="pp:generalNode" href="{{entity._links.generalNode.href}}">
+  {{/if}}
+  {{#each entity._links.nodes}}
+  <link rel="pp:node" href="{{href}}">
+  {{/each}}
+  {{#each entity._links.rasterFiles}}
+  <link rel="pp:rasterFile" href="{{href}}" sizes="{{sizes}}" type="{{type}}">
+  {{/each}}
+  {{#with entity._links.sourceFile}}
+  <link rel="pp:sourceFile" href="{{href}}" sizes="{{sizes}}" type="{{type}}">
+  {{/with}}
+  {{#if entity._links.specificNode}}
+  <link rel="pp:specificNode" href="{{entity._links.specificNode.href}}">
+  {{/if}}
+  <link rel="self" href="http://phylopic.org{{entity._links.self.href}}">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  {{#links entity._links}}{{/links}}
+  <script type="text/javascript">window.__PHYLOPIC__ENTITY__={{#json entity}}{{/json}}</script>
+</head>
+
+<body id="app">
+  <header>
+    <h1>{{#name entity._embedded.specificNode.names[0]}}{{/textname}}</h1>
+    {{#if entity.attribution }}
+    <h2>by {{entity.attribution}}</h2>
+    {{/if}}
+  </header>
+  <main>
+    <section id="image">
+      {{#with _links.source}}
+      <img src="{{href}}" width={{#width sizes}} height={{#height sizes}} alt="Silhouette">
+      {{/with}}
+    </section>
+    <section id="license">
+      <a href="{{_links.license.href}}">{{#licenseName _links.license.href}}</a>
+    </section>
+    <section id="nodes">
+      <ul class="node-list">
+        {{#each entity._embedded.nodes}}
+        <li><a href="{{_links.self.href}}">{{#shortname names[0]}}</a></li>
+        {{/each}}
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <section id="copyright">
+      {{#if entity.attribution }}
+      <div>Image &copy; 2019 {{entity.attribution}}.</div>
+      {{/if}}
+      <div>Website &copy; 2019 T. Michael Keesey.</div>
+    </section>
+  </footer>
+</body>
+
+</html>

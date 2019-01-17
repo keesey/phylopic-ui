@@ -14,6 +14,7 @@ const mapStateToProps = (state: State) => {
 	} as StateProps;
 };
 const mapDispatchToProps = (dispatch: Dispatch<State>) => ({
+	"onClick": () => undefined,
 	"onClose": async() => dispatch(selectImage({ "imageUID": null })),
 } as DispatchProps);
 export default connect(

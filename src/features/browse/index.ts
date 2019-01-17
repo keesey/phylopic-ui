@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { createSelector } from "reselect";
 import { State } from "../../stores";
 import { Image } from "../../stores/entities";
 import { selectImage } from "../../stores/lightbox";
@@ -7,8 +8,14 @@ import { getEntities, getTotal } from "../../stores/searches";
 import { getWindowHeight, getWindowWidth } from "../../stores/windowSize";
 import { loadImages } from "./actions";
 import Component, { DispatchProps, StateProps } from "./Component";
+const isPublicDomain = (url?: string) =>
+	(url || "").indexOf("publicdomain") >= 0;
 const KEY = "browse";
-const getImages = getEntities<Image>(KEY);
+const getImages = createSelector(
+	getEntities<Image>(KEY),
+	images => images.filter(image => isPublicDomain(image.licenseURL)),
+);
+// const getImages = getEntities<Image>(KEY);
 const getTotalImages = getTotal(KEY);
 const mapStateToProps = (state: State) => ({
 	"height": getWindowHeight(state),

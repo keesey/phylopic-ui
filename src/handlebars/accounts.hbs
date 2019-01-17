@@ -2,24 +2,24 @@
 <html>
 
 <head prefix="og: http://ogp.me/ns#">
-  <title>{{entity.given_name}} {{entity.family_name}} – PhyloPic</title>
+  <title>{{entity.givenName}} {{entity.familyName}} – PhyloPic</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="author" content="T. Michael Keesey (website)">
-  <meta name="description" content="PhyloPic page for {{entity.given_name}} {{entity.family_name}}.">
+  <meta name="description" content="PhyloPic page for {{entity.givenName}} {{entity.familyName}}.">
   <meta name="language" content="en">
   <meta name="no-email-collection" content="//unspam.com/noemailcollection">
   <meta name="reply-to" content="{{entity.email}}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@tmkeesey">
-  <meta name="twitter:description" content="PhyloPic page for {{entity.given_name}} {{entity.family_name}}.">
+  <meta name="twitter:description" content="PhyloPic page for {{entity.givenName}} {{entity.familyName}}.">
   <meta name="twitter:site" content="@phylopic">
-  <meta name="twitter:title" content="{{entity.given_name}} {{entity.family_name}} – PhyloPic">
+  <meta name="twitter:title" content="{{entity.givenName}} {{entity.familyName}} – PhyloPic">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta property="fb:app_id" content="280987075278200">
-  <meta property="og:description" content="PhyloPic page for {{entity.given_name}} {{entity.family_name}}.">
-  <meta property="og:site_name" content="PhyloPic">
-  <meta property="og:title" content="{{entity.given_name}} {{entity.family_name}} – PhyloPic">
+  <meta property="og:description" content="PhyloPic page for {{entity.givenName}} {{entity.familyName}}.">
+  <meta property="og:siteName" content="PhyloPic">
+  <meta property="og:title" content="{{entity.givenName}} {{entity.familyName}} – PhyloPic">
   <meta property="og:type" content="website">
   <meta property="og:url" content="http://phylopic.org/accounts/{{entity.uuid}}">
   <link rel="copyright" href="#copyright">
@@ -37,18 +37,22 @@
 
 <body id="app">
   <header>
-    <h1>{{entity.given_name}} {{entity.family_name}}</h1>
+    <h1>{{entity.givenName}} {{entity.familyName}}</h1>
     <h2><a href="mailto:{{entity.email}}">{{entity.email}}</a></h2>
   </header>
   <main>
+    {{#if entity._links.nodeSet}}
     <section>
       <h2>Names Contributed</h2>
       <ul class="name-list"></ul>
     </section>
+    {{/if}}
+    {{#if entity._links.imageSet}}
     <section>
       <h2>Silhouettes Contributed</h2>
       <ul class="image-list"></ul>
     </section>
+    {{/if}}
   </main>
   <footer>
     <section id="copyright">

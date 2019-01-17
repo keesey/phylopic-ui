@@ -22,7 +22,7 @@ class App extends React.Component<DispatchProps> {
 				<AppBar position="sticky">
 					<Toolbar>
 						<Typography variant="title" color="inherit">
-							PhyloPic
+							PhyloPic 2.0 prototype
 						</Typography>
 					</Toolbar>
 				</AppBar>

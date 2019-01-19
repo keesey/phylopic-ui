@@ -3,31 +3,34 @@
 
 <head prefix="og: http://ogp.me/ns#
               pp: http://docs.phylopic.org/ns#">
-  <title>{{#textname entity.names[0]}}{{/textname}} – PhyloPic</title>
+  <title>{{#textname entity.names.[0]}}{{/textname}} – PhyloPic</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="author" content="T. Michael Keesey">
-  <meta name="description" content="Free silhouettes for {{#textname entity.names[0]}}{{/textname}}.">
+  <meta name="description" content="Free silhouettes for {{#textname entity.names.[0]}}{{/textname}}.">
   <meta name="language" content="en">
   <meta name="no-email-collection" content="//unspam.com/noemailcollection">
   <meta name="reply-to" content="keesey+phylopic@gmail.com">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@tmkeesey">
-  <meta name="twitter:description" content="Free silhouettes for {{#textname entity.names[0]}}{{/textname}}.">
-  {{#if entity._embedded.primaryImage && entity._embedded.primaryImage._links['twitter:image']}}
-  {{#with entity._embedded.primaryImage._links['twitter:image']}}
+  <meta name="twitter:description" content="Free silhouettes for {{#textname entity.names.[0]}}{{/textname}}.">
+  {{#if entity._embedded.primaryImage}}
+  {{#if entity._embedded.primaryImage._links.['twitter:image']}}
+  {{#with entity._embedded.primaryImage._links.['twitter:image']}}
   <meta name="twitter:image" content="{{href}}">
   <meta name="twitter:image:height" content="{{#height sizes}}{{/height}}">
   <meta name="twitter:image:width" content="{{#width sizes}}{{/width}}">
   {{/with}}
   {{/if}}
+  {{/if}}
   <meta name="twitter:site" content="@phylopic">
-  <meta name="twitter:title" content="{{#textname entity.names[0]}}{{/textname}} – PhyloPic">
+  <meta name="twitter:title" content="{{#textname entity.names.[0]}}{{/textname}} – PhyloPic">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta property="fb:app_id" content="280987075278200">
-  <meta property="og:description" content="Free silhouettes for {{#textname entity.names[0]}}{{/textname}}.">
-  {{#if entity._embedded.primaryImage && entity._embedded.primaryImage._links['http://ogp.me/ns#image']}}
-  {{#with entity._embedded.primaryImage._links['http://ogp.me/ns#image']}}
+  <meta property="og:description" content="Free silhouettes for {{#textname entity.names.[0]}}{{/textname}}.">
+  {{#if entity._embedded.primaryImage}}
+  {{#if entity._embedded.primaryImage._links.['http://ogp.me/ns#image']}}
+  {{#with entity._embedded.primaryImage._links.['http://ogp.me/ns#image']}}
   <link rel="image_src" href="{{href}}">
   <meta property="og:image" content="{{href}}">
   <meta property="og:image:height" content="{{#height sizes}}{{/height}}">
@@ -35,8 +38,9 @@
   <meta property="og:image:width" content="{{#width sizes}}{{/width}}">
   {{/with}}
   {{/if}}
+  {{/if}}
   <meta property="og:site_name" content="PhyloPic">
-  <meta property="og:title" content="{{#textname entity.names[0]}}{{/textname}} – PhyloPic">
+  <meta property="og:title" content="{{#textname entity.names.[0]}}{{/textname}} – PhyloPic">
   <meta property="og:type" content="website">
   <meta property="og:url" content="http://phylopic.org/nodes/{{entity.uuid}}">
   <link rel="copyright" href="#copyright">
@@ -69,19 +73,21 @@
 
 <body id="app">
   <header>
-    <h1>{{#name entity.names[0]}}{{/name}}</h1>
+    <h1>{{#name entity.names.[0]}}{{/name}}</h1>
     {{#if entity._embedded.parentNode}}
-    <a href="{{entity._embedded.parentNode._links.self.href}}" class="parent-node">{{#name entity._embedded.parentNode.names[0]}}{{/name}}</a>
+    <a href="{{entity._embedded.parentNode._links.self.href}}" class="parent-node">{{#name entity._embedded.parentNode.names.[0]}}{{/name}}</a>
     {{/if}}
   </header>
   <main>
-    {{#if entity.names.length > 1}}
+    {{#if entity.names.[1]}}
     <section>
       <h2>Synonyms</h2>
       <ul class="name-list">
-      {{#each entity.names.slice(1)}}
-      <li>{{#name this}}{{/name}}</li>
-      {{/each}}
+        {{#each entity.names}}
+        {{#if @index}}
+        <li>{{#name this}}{{/name}}</li>
+        {{/if}}
+        {{/each}}
       </ul>
     </section>
     {{/if}}

@@ -91,10 +91,32 @@
       </ul>
     </section>
     {{/if}}
+    {{#if entity._embedded.childNodes.length}}
+    <section>
+      <h2>Descendants</h2>
+      <ul class="name-list">
+        {{#each entity._embedded.childNodes}}
+        <li>
+          <a href="{{this._links.self.href}}" class="child-node">{{#name this.names.[0]}}{{/name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </section>
+    {{/if}}
+    {{#if entity._links.primaryImage}}
     <section>
       <h2>Silhouettes</h2>
-      <ul class="image-list"></ul>
+      <ul class="image-list">
+        <li>
+          <a href="{{entity._links.primaryImage.href}}">
+            {{#with entity._embedded.primaryImage._links.raster.[0]}}
+            <img src="{{href}}" width="{{#width sizes}}{{/width}}" height="{{#height sizes}}{{/height}}" />
+            {{/with}}
+          </a>
+        </li>
+      </ul>
     </section>
+    {{/if}}
   </main>
   <footer>
     <section id="copyright">

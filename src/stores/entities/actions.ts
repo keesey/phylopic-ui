@@ -1,4 +1,5 @@
-import { Dispatch } from "redux";
+import { AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import { State } from "../State";
 import { Entity } from "./Entity";
 import { getEntityMap } from "./selectors";
@@ -20,7 +21,7 @@ export function fetchEntities<T>(payload: {
 	uids: ReadonlySet<string>;
 }) {
 	const { fields, uids } = payload;
-	return async(dispatch: Dispatch<State>, getState: () => State) => {
+	return async(dispatch: ThunkDispatch<State, {}, AnyAction>, getState: () => State) => {
 		if (!fields.size || !uids.size) {
 			return;
 		}
@@ -31,17 +32,17 @@ export function fetchEntities<T>(payload: {
 export function getEntities<T>(payload: {
 	fields?: ReadonlySet<keyof T>;
 	uids: Iterable<string>;
-}): (dispatch: Dispatch<State>, getState: () => State) => Promise<ReadonlySet<EntityElement<T>>>;
+}): (dispatch: ThunkDispatch<State, {}, AnyAction>, getState: () => State) => Promise<ReadonlySet<EntityElement<T>>>;
 export function getEntities<T>(payload: {
 	fields?: ReadonlySet<keyof T>;
 	uids: ReadonlyArray<string>;
-}): (dispatch: Dispatch<State>, getState: () => State) => Promise<ReadonlyArray<EntityElement<T>>>;
+}): (dispatch: ThunkDispatch<State, {}, AnyAction>, getState: () => State) => Promise<ReadonlyArray<EntityElement<T>>>;
 export function getEntities<T>(payload: {
 	fields?: ReadonlySet<keyof T>;
 	uids: Iterable<string>;
 }) {
 	const { fields, uids } = payload;
-	return async(dispatch: Dispatch<State>, getState: () => State) => {
+	return async(dispatch: ThunkDispatch<State, {}, AnyAction>, getState: () => State) => {
 		const entities = getEntityMap(getState());
 		if (fields !== undefined && fields.size) {
 			const fieldsToFetch = new Set<keyof T>();

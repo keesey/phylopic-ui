@@ -1,5 +1,5 @@
-
-import { Dispatch } from "redux";
+import { AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import { State } from "../";
 import { addEntities, Entity } from "../entities";
 import { Params } from "./Params";
@@ -35,7 +35,7 @@ export const insertEntities = <T>(payload: Readonly<{
 	key: string;
 	start: number;
 	total?: number;
-}>) => (dispatch: Dispatch<State>) => {
+}>) => (dispatch: ThunkDispatch<State, {}, AnyAction>) => {
 	const { entities, key, start, total } = payload;
 	dispatch(addEntities(entities));
 	if (total !== undefined) {

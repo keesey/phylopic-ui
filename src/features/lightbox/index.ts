@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import { State } from "../../stores";
 import { getProgress } from "../../stores/async";
 import { getImage, getNames, getProgressKey, selectImage } from "../../stores/lightbox";
@@ -13,7 +14,7 @@ const mapStateToProps = (state: State) => {
 		progress,
 	} as StateProps;
 };
-const mapDispatchToProps = (dispatch: Dispatch<State>) => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<State, {}, AnyAction>) => ({
 	"onClick": () => undefined,
 	"onClose": async() => dispatch(selectImage({ "imageUID": null })),
 } as DispatchProps);

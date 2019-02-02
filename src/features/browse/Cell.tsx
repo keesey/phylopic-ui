@@ -7,7 +7,7 @@ export interface Props extends GridCellProps {
 	images: ReadonlyArray<Entity & Partial<Image>>;
 	onImageClick: (imageUID: string) => void;
 }
-const Cell: React.SFC<Props> = ({
+const Cell: React.FunctionComponent<Props> = ({
 	columnCount,
 	columnIndex,
 	key,

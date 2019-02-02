@@ -1,4 +1,5 @@
-import { Dispatch } from "redux";
+import { AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import { fetchLegacy, Image as LegacyImage } from "../../legacy/api";
 import { State } from "../../stores";
 import { fail, start, succeed } from "../../stores/async";
@@ -7,7 +8,7 @@ import { insertEntities } from "../../stores/searches";
 const key = "browse";
 type Results = Array<Entity & Partial<LegacyImage>>;
 export const loadImages = (startIndex: number, size: number) =>
-	async(dispatch: Dispatch<State>, getState: () => State) => {
+	async(dispatch: ThunkDispatch<State, {}, AnyAction>, getState: () => State) => {
 		if (!(size > 0)) {
 			return;
 		}

@@ -1,4 +1,5 @@
-import { Dispatch } from "react-redux";
+import { AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import { State } from "../";
 export enum Types {
 	FAIL = "async/FAIL",
@@ -24,7 +25,7 @@ export type Action = ReturnType<typeof fail>
 	| ReturnType<typeof start>
 	| ReturnType<typeof succeed>;
 export const inspect = <T>(payload: {key: string, promise: Promise<T> }) =>
-	async(dispatch: Dispatch<State>, getState: () => State) => {
+	async(dispatch: ThunkDispatch<State, {}, AnyAction>/*, getState: () => State*/) => {
 		const { key, promise } = payload;
 		dispatch(start({ key }));
 		let result: T | undefined;

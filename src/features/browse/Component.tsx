@@ -1,4 +1,4 @@
-import Chip from "material-ui/Chip";
+import Chip from "@material-ui/core/Chip";
 import * as React from "react";
 import { InfiniteLoader } from "react-virtualized/dist/es/InfiniteLoader";
 import { Entity, Image } from "../../stores/entities";
@@ -16,7 +16,7 @@ export interface StateProps {
 	width: number;
 }
 const ensureMin1 = (n: number) => isNaN(n) ? 1 : Math.max(1, n);
-class Component extends React.Component<DispatchProps & StateProps> {
+class Component extends React.PureComponent<DispatchProps & StateProps> {
 	public async componentWillMount() {
 		const { height, onLoadRequest, total } = this.props;
 		if (isNaN(total)) {

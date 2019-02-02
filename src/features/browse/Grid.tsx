@@ -12,7 +12,7 @@ export interface Props extends InfiniteLoaderChildProps {
 	rowHeight: number;
 	width: number;
 }
-const Grid: React.SFC<Props> = ({
+const Grid: React.FunctionComponent<Props> = ({
 	columnCount,
 	columnWidth,
 	height,

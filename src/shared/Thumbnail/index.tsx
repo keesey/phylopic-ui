@@ -5,7 +5,7 @@ export interface Props {
 	image: (Entity & Partial<Image>) | undefined;
 	onClick?: () => void;
 }
-const Thumbnail: React.SFC<Props> = ({ image, onClick }) => {
+const Thumbnail: React.FunctionComponent<Props> = ({ image, onClick }) => {
 	if (image) {
 		const img = (
 			<img

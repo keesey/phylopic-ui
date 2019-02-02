@@ -1,4 +1,5 @@
-import { Dispatch } from "redux";
+import { AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import { fetchLegacy, Image as LegacyImage, PNGFile } from "../../legacy/api";
 import { fail, start, succeed } from "../async";
 import { addEntities, Entity, getEntities, Image, Name, User } from "../entities";
@@ -33,7 +34,7 @@ const getOriginalSize = (image: LegacyImage) => {
 	throw new Error("Invalid image.");
 };
 export const selectImage = (payload: { imageUID: string | null; }) =>
-	async(dispatch: Dispatch<State>) => {
+	async(dispatch: ThunkDispatch<State, {}, AnyAction>) => {
 		const { imageUID } = payload;
 		if (!imageUID) {
 			dispatch(set({ "imageUID": null }));

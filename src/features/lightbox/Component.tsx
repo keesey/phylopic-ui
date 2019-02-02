@@ -1,6 +1,7 @@
-import Dialog, { DialogContent } from "material-ui/Dialog";
-import Icon from "material-ui/Icon";
-import IconButton from "material-ui/IconButton";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import Icon from "@material-ui/core/Icon";
+import IconButton from "@material-ui/core/IconButton";
 import * as React from "react";
 import ProgressIndicator from "../../shared/ProgressIndicator";
 import { Progress } from "../../stores/async";
@@ -16,7 +17,7 @@ export interface StateProps {
 	names: ReadonlyArray<Entity & Pick<Name, "html">> | null;
 	progress: Progress;
 }
-const Component: React.SFC<DispatchProps & StateProps> = ({
+const Component: React.FunctionComponent<DispatchProps & StateProps> = ({
 	image,
 	names,
 	onClick,

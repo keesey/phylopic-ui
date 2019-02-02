@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import { createSelector } from "reselect";
 import { State } from "../../stores";
 import { Image } from "../../stores/entities";
@@ -23,7 +24,7 @@ const mapStateToProps = (state: State) => ({
 	"total": getTotalImages(state),
 	"width": getWindowWidth(state),
 } as StateProps);
-const mapDispatchToProps = (dispatch: Dispatch<State>) => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<State, {}, AnyAction>) => ({
 	"onImageClick": async(imageUID: string) => dispatch(selectImage({ imageUID })),
 	"onLoadRequest": async(start: number, size: number) => dispatch(loadImages(start, size)),
 } as DispatchProps);

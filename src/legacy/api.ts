@@ -1,4 +1,5 @@
-import { Dispatch } from "redux";
+import { AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import { fetchJSON } from "../helpers/transport";
 export interface FailedResponse {
 	readonly fault: {
@@ -64,7 +65,7 @@ export interface User {
 	readonly firstName: string;
 	readonly lastName: string;
 }
-export async function fetchLegacy<R>(dispatch: Dispatch<{}>, url: string, init?: RequestInit): Promise<R> {
+export async function fetchLegacy<R>(dispatch: ThunkDispatch<{}, {}, AnyAction>, url: string, init?: RequestInit): Promise<R> {
 	if (!init) {
 		init = {
 			"method": "GET",

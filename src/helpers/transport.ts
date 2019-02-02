@@ -1,4 +1,4 @@
-// import { Dispatch } from "redux";
+// import { ThunkDispatch } from "redux-thunk";
 // import { State } from "../reducers";
 // import { Filter, ListParams } from "../types/ListParams";
 export class ResponseError extends Error {

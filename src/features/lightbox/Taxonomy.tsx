@@ -1,7 +1,7 @@
-import { Theme } from "material-ui";
-import Chip from "material-ui/Chip";
-import Icon from "material-ui/Icon";
-import { StyleRules, withStyles, WithStyles } from "material-ui/styles";
+import { Theme } from "@material-ui/core";
+import Chip from "@material-ui/core/Chip";
+import Icon from "@material-ui/core/Icon";
+import { StyleRules, withStyles, WithStyles } from "@material-ui/core/styles";
 import * as React from "react";
 import { Entity, Name } from "../../stores/entities";
 const styles: (theme: Theme) => StyleRules = (theme: Theme) => ({
@@ -17,7 +17,7 @@ const styles: (theme: Theme) => StyleRules = (theme: Theme) => ({
 export interface Props extends Partial<WithStyles> {
 	names: ReadonlyArray<Entity & Pick<Name, "html">>;
 }
-const Taxonomy: React.SFC<Props> = ({ classes, names }) => (
+const Taxonomy: React.FunctionComponent<Props> = ({ classes, names }) => (
 	<div className={classes!.root}>
 		{
 			names.map((name, index) => [

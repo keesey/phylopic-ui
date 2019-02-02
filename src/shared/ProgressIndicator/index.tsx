@@ -1,6 +1,6 @@
-import Button from "material-ui/Button";
-import CircularProgress from "material-ui/Progress/CircularProgress";
-import Snackbar, { SnackbarProps } from "material-ui/Snackbar";
+import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Snackbar, { SnackbarProps } from "@material-ui/core/Snackbar";
 import * as React from "react";
 import { Progress } from "../../stores/async";
 export interface Props {
@@ -8,7 +8,7 @@ export interface Props {
 	onRetry?: () => void;
 	progress: Progress;
 }
-const ProgressIndicator: React.SFC<Props> = ({
+const ProgressIndicator: React.FunctionComponent<Props> = ({
 	children,
 	onRetry,
 	progress,
